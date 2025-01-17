@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Zea {
     public static void main(String[] args) {
-        ArrayList<Task> store = new ArrayList<>();
             String logo = "______________________\n"
                     + "Hello! I'm Zea\n"
                     + "What can I do for you?\n"
@@ -11,45 +10,60 @@ public class Zea {
             System.out.println(logo);
 
             Scanner scanner = new Scanner(System.in);
-            while (true) {
-                String command = scanner.nextLine();
-                String[] commands = command.split(" ");
-                if (commands[0].equals("bye")) { // Exit from program
+            Tasks taskStore = new Tasks();
+        label:
+        while (true) {
+            String command = scanner.nextLine();
+            String[] commands = command.split(" ", 2);
+            switch (commands[0]) {
+                case "bye":  // Exit from program
                     System.out.println("----------------------");
                     System.out.println("Bye. Hope to see you again soon!");
                     System.out.println("----------------------");
+                    break label;
+                case "list":  // Print out all commands in store
+                    taskStore.list();
                     break;
-                } else if (commands[0].equals("list")) { // Print out all commands in store
-                    System.out.println("----------------------");
-                    System.out.println("Here are the tasks in your list:");
-                    for (int i = 0; i < store.size(); i++) {
-                        Task t = store.get(i);
-                        System.out.println(i+1 + ". " + t);
-                    }
-                    System.out.println("----------------------");
-                } else if (commands[0].equals("mark")) { // TODO: handle invalid idx
+                case "mark": { // TODO: handle invalid idx
                     int idx = Integer.parseInt(commands[1]) - 1; // subtract 1 to convert list number to array idx
-                    Task t = store.get(idx);
-                    t.done();
-                    System.out.println("----------------------");
-                    System.out.println("Nice! I've marked this task as done:");
-                    System.out.println(t);
-                    System.out.println("----------------------");
-                } else if (commands[0].equals("unmark")) { // TODO: handle invalid idx
-                    int idx = Integer.parseInt(commands[1]) - 1; // subtract 1 to convert list number to array idx
-                    Task t = store.get(idx);
-                    t.undone();
-                    System.out.println("----------------------");
-                    System.out.println("Ok, I've marked this task as not done yet:");
-                    System.out.println(t);
-                    System.out.println("----------------------");
-                } else { // add command to store
-                    Task newTask = new Task(command);
-                    store.add(newTask);
-                    System.out.println("----------------------");
-                    System.out.println("added: " + command);
-                    System.out.println("----------------------");
+
+                    taskStore.mark(idx);
+                    break;
                 }
+                case "unmark": { // TODO: handle invalid idx
+                    int idx = Integer.parseInt(commands[1]) - 1; // subtract 1 to convert list number to array idx
+
+                    taskStore.unmark(idx);
+                    break;
+                }
+                case "todo": {
+                    String description = commands[1].strip();
+                    Todo t = new Todo(description);
+                    taskStore.addTask(t);
+                    break;
+                }
+                case "deadline": {
+                    String[] unformattedDeadline = commands[1].split("/");
+                    String description = unformattedDeadline[0].strip();
+                    String by = unformattedDeadline[1].split(" ", 2)[1].strip(); // idx 0 is by. The rest is the date/time
+
+                    Deadline d = new Deadline(description, by);
+                    taskStore.addTask(d);
+                    break;
+                }
+                case "event": {
+                    String[] unformattedEvent = commands[1].split("/"); // description, from, to
+                    String description = unformattedEvent[0].strip();
+                    String from = unformattedEvent[1].split(" ", 2)[1].strip();
+                    String to = unformattedEvent[2].split(" ", 2)[1].strip();
+                    Event e = new Event(description, from, to);
+                    taskStore.addTask(e);
+                    break;
+                }
+                default:  // add command to store
+                    System.out.println("Invalid command");
+                    break;
             }
+        }
     }
 }
