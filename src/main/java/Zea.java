@@ -13,19 +13,20 @@ public class Zea {
             Tasks taskStore = new Tasks();
         label:
         while (true) {
-            String command = scanner.nextLine();
-            String[] commands = command.split(" ", 2);
+            String userInput = scanner.nextLine();
+            String[] commands = userInput.split(" ", 2);
             try {
-                switch (commands[0]) {
-                    case "bye":  // Exit from program
+                Command command = Command.valueOf(commands[0].strip().toUpperCase());
+                switch (command) {
+                    case BYE:  // Exit from program
                         System.out.println("----------------------");
                         System.out.println("Bye. Hope to see you again soon!");
                         System.out.println("----------------------");
                         break label;
-                    case "list":  // Print out all commands in store
+                    case LIST:  // Print out all commands in store
                         taskStore.list();
                         break;
-                    case "mark": { // TODO: handle invalid idx
+                    case MARK: {
                         int idx = Integer.parseInt(commands[1]) - 1; // subtract 1 to convert list number to array idx
                         if (idx < 0 || idx >= taskStore.tasks.size()) {
                             throw new DukeException("Invalid index. Please choose an index between 1 and " + taskStore.tasks.size());
@@ -33,7 +34,7 @@ public class Zea {
                         taskStore.mark(idx);
                         break;
                     }
-                    case "unmark": { // TODO: handle invalid idx
+                    case UNMARK: {
                         int idx = Integer.parseInt(commands[1]) - 1; // subtract 1 to convert list number to array idx
                         if (idx < 0 || idx >= taskStore.tasks.size()) {
                             throw new DukeException("Invalid index. Please choose an index between 1 and " + taskStore.tasks.size());
@@ -41,7 +42,7 @@ public class Zea {
                         taskStore.unmark(idx);
                         break;
                     }
-                    case "todo": {
+                    case TODO: {
                         String description = commands[1].strip();
                         if (description.isEmpty()) {
                             throw new DukeException("Description cannot be empty.");
@@ -50,7 +51,7 @@ public class Zea {
                         taskStore.addTask(t);
                         break;
                     }
-                    case "deadline": {
+                    case DEADLINE: {
                         String[] unformattedDeadline = commands[1].split("/");
                         if (unformattedDeadline.length != 2) {
                             throw new DukeException("Incorrect format of deadline. Please use the following format: deadline <DESCRIPTION> /by <DATE>");
@@ -62,7 +63,7 @@ public class Zea {
                         taskStore.addTask(d);
                         break;
                     }
-                    case "event": {
+                    case EVENT: {
                         String[] unformattedEvent = commands[1].split("/"); // description, from, to
                         if (unformattedEvent.length != 3) {
                             throw new DukeException("Incorrect format of event. Please use the following format: event <DESCRIPTION> /from <DATE> /to <DATE>");
@@ -74,7 +75,7 @@ public class Zea {
                         taskStore.addTask(e);
                         break;
                     }
-                    case "delete": {
+                    case DELETE: {
                         int idx = Integer.parseInt(commands[1]) - 1; // subtract 1 to convert list number to array idx
                         if (idx < 0 || idx >= taskStore.tasks.size()) {
                             throw new DukeException("Invalid index. Please choose an index between 1 and " + taskStore.tasks.size());
