@@ -45,4 +45,14 @@ public class Tasks {
         System.out.println(t);
         System.out.println("----------------------");
     }
+
+    public void delete(int i) {
+        Task t = this.tasks.get(i);
+        this.tasks.remove(i);
+        System.out.println("----------------------");
+        System.out.println("Sad to see this task go:");
+        System.out.println(t);
+        System.out.println("Now you have " + this.tasks.size() + " tasks in the list");
+        System.out.println("----------------------");
+    }
 }

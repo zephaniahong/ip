@@ -74,6 +74,14 @@ public class Zea {
                         taskStore.addTask(e);
                         break;
                     }
+                    case "delete": {
+                        int idx = Integer.parseInt(commands[1]) - 1; // subtract 1 to convert list number to array idx
+                        if (idx < 0 || idx >= taskStore.tasks.size()) {
+                            throw new DukeException("Invalid index. Please choose an index between 1 and " + taskStore.tasks.size());
+                        }
+                        taskStore.delete(idx);
+                        break;
+                    }
                     default:  // add command to store
                         throw new DukeException("Sorry, I do not understand that command. Try the following commands:\nlist\ntodo\ndeadline\nevent");
                 }
