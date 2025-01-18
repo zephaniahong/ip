@@ -70,18 +70,27 @@ public class Tasks {
                String[] parts = line.split("\\|");
                switch (parts[0]) {
                    case "T": {
+                       if (parts.length != 3) {
+                           throw new ZeaException("Invalid file format");
+                       }
                       Todo todo = new Todo(parts[2]);
                       todo.isDone = Objects.equals(parts[1], "1");
                       this.tasks.add(todo);
                       break;
                    }
                    case "D": {
+                       if (parts.length != 4) {
+                           throw new ZeaException("Invalid file format");
+                       }
                        Deadline deadline = new Deadline(parts[2], parts[3]);
                        deadline.isDone = Objects.equals(parts[1], "1");
                        this.tasks.add(deadline);
                        break;
                    }
                    case "E": {
+                       if (parts.length != 5) {
+                           throw new ZeaException("Invalid file format");
+                       }
                        Event event = new Event(parts[2], parts[3], parts[4]);
                        event.isDone = Objects.equals(parts[1], "1");
                        this.tasks.add(event);
@@ -89,7 +98,7 @@ public class Tasks {
                    }
                }
            }
-        } catch (IOException e) {
+        } catch (IOException | ZeaException e) {
             System.out.println(e.getMessage());
         }
     }
