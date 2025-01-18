@@ -1,6 +1,12 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Tasks {
+    private static final String fp = "./data/zea.txt";
     ArrayList<Task> tasks;
 
     public Tasks() {
@@ -54,5 +60,52 @@ public class Tasks {
         System.out.println(t);
         System.out.println("Now you have " + this.tasks.size() + " tasks in the list");
         System.out.println("----------------------");
+    }
+
+    public void read() {
+        try {
+           BufferedReader reader = new BufferedReader(new FileReader(fp));
+           String line;
+           while ((line = reader.readLine()) != null ) {
+               String[] parts = line.split("\\|");
+               switch (parts[0]) {
+                   case "T": {
+                      Todo todo = new Todo(parts[2]);
+                      todo.isDone = Objects.equals(parts[1], "1");
+                      this.tasks.add(todo);
+                      break;
+                   }
+                   case "D": {
+                       Deadline deadline = new Deadline(parts[2], parts[3]);
+                       deadline.isDone = Objects.equals(parts[1], "1");
+                       this.tasks.add(deadline);
+                       break;
+                   }
+                   case "E": {
+                       Event event = new Event(parts[2], parts[3], parts[4]);
+                       event.isDone = Objects.equals(parts[1], "1");
+                       this.tasks.add(event);
+                       break;
+                   }
+               }
+           }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void save()  {
+        try {
+            FileWriter writer = new FileWriter(fp);
+            StringBuilder sb = new StringBuilder();
+            for (Task t : this.tasks) {
+               sb.append(t.toFileFormattedString());
+               sb.append("\n");
+            }
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
