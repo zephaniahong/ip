@@ -1,10 +1,14 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Event extends Task{
 
-    protected String to;
-    protected String from;
+    protected LocalDateTime to;
+    protected LocalDateTime from;
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
 
-    public Event(String description, String from, String to) {
+    public Event(String description, LocalDateTime from, LocalDateTime to) {
         super(description);
         this.from = from;
         this.to = to;
@@ -12,7 +16,7 @@ public class Event extends Task{
 
     @Override
     public String toFileFormattedString() {
-        return "E|" + (this.isDone ? "1":"0") + "|" + description + "|" + from + "|" + to;
+        return "E|" + (this.isDone ? "1":"0") + "|" + description + "|" + from.format(formatter) + "|" + to.format(formatter);
     }
 
     @Override

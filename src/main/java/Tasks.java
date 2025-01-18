@@ -2,11 +2,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Tasks {
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     private static final String fp = "./data/zea.txt";
+
     ArrayList<Task> tasks;
 
     public Tasks() {
@@ -82,7 +86,8 @@ public class Tasks {
                        if (parts.length != 4) {
                            throw new ZeaException("Invalid file format");
                        }
-                       Deadline deadline = new Deadline(parts[2], parts[3]);
+                       LocalDateTime byDateTime = LocalDateTime.parse(parts[3], formatter);
+                       Deadline deadline = new Deadline(parts[2], byDateTime);
                        deadline.isDone = Objects.equals(parts[1], "1");
                        this.tasks.add(deadline);
                        break;
@@ -91,7 +96,9 @@ public class Tasks {
                        if (parts.length != 5) {
                            throw new ZeaException("Invalid file format");
                        }
-                       Event event = new Event(parts[2], parts[3], parts[4]);
+                       LocalDateTime fromDateTime = LocalDateTime.parse(parts[3], formatter);
+                       LocalDateTime toDateTime = LocalDateTime.parse(parts[4], formatter);
+                       Event event = new Event(parts[2], fromDateTime, toDateTime);
                        event.isDone = Objects.equals(parts[1], "1");
                        this.tasks.add(event);
                        break;
