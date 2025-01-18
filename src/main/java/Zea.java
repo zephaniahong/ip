@@ -1,6 +1,11 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Zea {
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     public static void main(String[] args) {
             String logo = "______________________\n"
                     + "Hello! I'm Zea\n"
@@ -55,27 +60,33 @@ public class Zea {
                         break;
                     }
                     case DEADLINE: {
-                        String[] unformattedDeadline = commands[1].split("/");
+                        String[] unformattedDeadline = commands[1].split("/", 2);
                         if (unformattedDeadline.length != 2) {
                             throw new ZeaException("Incorrect format of deadline. Please use the following format: deadline <DESCRIPTION> /by <DATE>");
                         }
                         String description = unformattedDeadline[0].strip();
                         String by = unformattedDeadline[1].split(" ", 2)[1].strip(); // idx 0 is by. The rest is the date/time
-
-                        Deadline d = new Deadline(description, by);
+                        LocalDateTime byDateTime = LocalDateTime.parse(by, formatter);
+                        Deadline d = new Deadline(description, byDateTime);
                         taskStore.addTask(d);
                         taskStore.save();
                         break;
                     }
                     case EVENT: {
-                        String[] unformattedEvent = commands[1].split("/"); // description, from, to
-                        if (unformattedEvent.length != 3) {
+                        String[] unformattedEvent = commands[1].split("/from"); // description, from and to
+                        if (unformattedEvent.length != 2) {
                             throw new ZeaException("Incorrect format of event. Please use the following format: event <DESCRIPTION> /from <DATE> /to <DATE>");
                         }
                         String description = unformattedEvent[0].strip();
-                        String from = unformattedEvent[1].split(" ", 2)[1].strip();
-                        String to = unformattedEvent[2].split(" ", 2)[1].strip();
-                        Event e = new Event(description, from, to);
+                        String[] fromTo = unformattedEvent[1].split("/to");
+                        if (fromTo.length != 2) {
+                            throw new ZeaException("Incorrect format of event. Please use the following format: event <DESCRIPTION> /from <DATE> /to <DATE>");
+                        }
+                        String from = fromTo[0].strip();
+                        String to = fromTo[1].strip();
+                        LocalDateTime fromDateTime = LocalDateTime.parse(from, formatter);
+                        LocalDateTime toDateTime = LocalDateTime.parse(to, formatter);
+                        Event e = new Event(description, fromDateTime, toDateTime);
                         taskStore.addTask(e);
                         taskStore.save();
                         break;
@@ -92,7 +103,7 @@ public class Zea {
                     default:  // add command to store
                         throw new ZeaException("Sorry, I do not understand that command. Try the following commands:\nlist\ntodo\ndeadline\nevent");
                 }
-            } catch (ZeaException e) {
+            } catch (ZeaException | DateTimeParseException e) {
                 System.out.println(e.getMessage());
             }
         }

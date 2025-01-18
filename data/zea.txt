@@ -1,6 +1,9 @@
 T|1|read book
-D|0|return book|June 6th
-E|0|project meeting|Aug 6th 2pm|4pm
+D|0|return book|06/12/2025 12:30
+E|0|project meeting|09/06/2025 14:00|09/06/2025 15:00
 T|1|join sports club
-D|0|buy chicken|5th May
-E|1|wedding|Mar 3rd|Mar 5th
+D|0|buy chicken|05/05/2025 14:00
+E|1|wedding|26/03/2025 12:15|29/03/2025 18:30
+D|0|sell rice|29/12/2025 18:35
+D|0|sell pork|26/01/2025 15:00
+E|1|armpit|12/12/2025 15:15|12/12/2025 18:45
