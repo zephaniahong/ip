@@ -1,8 +1,8 @@
-package Zea.command;
+package zea.command;
 
-import Zea.Storage;
-import Zea.task.Tasks;
-import Zea.ui.Ui;
+import zea.Storage;
+import zea.task.Tasks;
+import zea.ui.Ui;
 
 public class ListCommand extends Command {
     @Override

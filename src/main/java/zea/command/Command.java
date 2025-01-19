@@ -1,9 +1,9 @@
-package Zea.command;
+package zea.command;
 
-import Zea.Storage;
-import Zea.ZeaException;
-import Zea.task.Tasks;
-import Zea.ui.Ui;
+import zea.Storage;
+import zea.ZeaException;
+import zea.task.Tasks;
+import zea.ui.Ui;
 
 public abstract class Command {
     protected boolean isExit;
@@ -17,6 +17,14 @@ public abstract class Command {
     }
 
     public abstract void execute(Tasks tasks, Ui ui, Storage storage) throws ZeaException;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        return obj != null && getClass() == obj.getClass();
+    }
 }
 //LIST,
 //TODO,

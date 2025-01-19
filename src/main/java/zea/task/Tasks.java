@@ -1,4 +1,4 @@
-package Zea.task;
+package zea.task;
 
 import java.util.ArrayList;
 
@@ -36,7 +36,6 @@ public class Tasks {
     }
 
     public void delete(int i) {
-        Task t = this.tasks.get(i);
         this.tasks.remove(i);
     }
 

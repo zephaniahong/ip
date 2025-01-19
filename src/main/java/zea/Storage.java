@@ -1,6 +1,6 @@
-package Zea;
+package zea;
 
-import Zea.task.*;
+import zea.task.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
