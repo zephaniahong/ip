@@ -16,6 +16,11 @@ public class Storage {
         this.fp = fp;
     }
 
+    /**
+     * Loads the tasks from the filepath into a list of <code>Task</code>
+     * @return a list of <code>Task</code>
+     * @throws ZeaException - if the format of the file is invalid
+     */
     public ArrayList<Task> load() throws ZeaException {
         ArrayList<Task> list = new ArrayList<>();
         try {
@@ -68,7 +73,11 @@ public class Storage {
         return list;
     }
 
-    public void save(Tasks tasks) throws ZeaException {
+    /**
+     * Saves the tasks into a file
+     * @param tasks - the <code>Tasks</code> to be saved
+     */
+    public void save(Tasks tasks) {
         try {
             FileWriter writer = new FileWriter(fp);
             StringBuilder sb = new StringBuilder();
