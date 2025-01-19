@@ -1,3 +1,7 @@
+package Zea.ui;
+
+import Zea.ZeaException;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -10,7 +14,7 @@ public class Ui {
 
     public void showWelcome() {
         String logo = "______________________\n"
-                + "Hello! I'm Zea\n"
+                + "Hello! I'm Zea.Zea\n"
                 + "What can I do for you?\n"
                 + "______________________\n";
         System.out.println(logo);

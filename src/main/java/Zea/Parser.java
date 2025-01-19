@@ -1,3 +1,8 @@
+package Zea;
+
+import Zea.command.*;
+import Zea.task.Task;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -53,7 +58,7 @@ public class Parser {
                     int idx = Integer.parseInt(tokens[1]) - 1; // subtract 1 to convert list number to array idx
                     return new DeleteCommand(idx);
                 }
-                default:  // add command to store
+                default:  // TODO: handle unknown command
                     throw new ParseException("Sorry, I do not understand that command. Try the following commands:\nlist\ntodo\ndeadline\nevent");
             }
         } catch (DateTimeParseException | ParseException e) {

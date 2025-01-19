@@ -1,4 +1,12 @@
-public class DeleteCommand extends Command{
+package Zea.command;
+
+import Zea.Storage;
+import Zea.ZeaException;
+import Zea.task.Task;
+import Zea.task.Tasks;
+import Zea.ui.Ui;
+
+public class DeleteCommand extends Command {
     int idx;
 
     public DeleteCommand(int idx) {

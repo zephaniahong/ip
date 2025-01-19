@@ -1,6 +1,14 @@
+package Zea.command;
+
+import Zea.Storage;
+import Zea.ZeaException;
+import Zea.task.Event;
+import Zea.task.Tasks;
+import Zea.ui.Ui;
+
 import java.time.LocalDateTime;
 
-public class EventCommand extends Command{
+public class EventCommand extends Command {
     private String description;
     private LocalDateTime from;
     private LocalDateTime to;

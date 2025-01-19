@@ -1,3 +1,9 @@
+package Zea.command;
+
+import Zea.Storage;
+import Zea.task.Tasks;
+import Zea.ui.Ui;
+
 public class ExitCommand extends Command {
     public ExitCommand() {
         this.isExit = true;

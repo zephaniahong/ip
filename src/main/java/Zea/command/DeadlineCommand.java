@@ -1,3 +1,11 @@
+package Zea.command;
+
+import Zea.Storage;
+import Zea.ZeaException;
+import Zea.task.Deadline;
+import Zea.task.Tasks;
+import Zea.ui.Ui;
+
 import java.time.LocalDateTime;
 
 public class DeadlineCommand extends Command {
