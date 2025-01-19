@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Ui {
     Scanner scanner;
+
     public Ui() {
         this.scanner = new Scanner(System.in);
     }
@@ -24,7 +25,7 @@ public class Ui {
         System.out.println(e.getMessage());
     }
 
-    public <T>void displayItem(String header, T item, String footer) {
+    public <T> void displayItem(String header, T item, String footer) {
         System.out.println("----------------------");
         System.out.println(item);
         if (!Objects.equals(footer, "")) {
@@ -38,7 +39,7 @@ public class Ui {
         System.out.println(header);
         for (int i = 0; i < list.size(); i++) {
             T t = list.get(i);
-            System.out.println(i+1 + ". " + t);
+            System.out.println(i + 1 + ". " + t);
         }
         System.out.println("----------------------");
     }

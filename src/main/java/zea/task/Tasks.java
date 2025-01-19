@@ -20,7 +20,7 @@ public class Tasks {
     public Task getTask(int idx) {
         return this.tasks.get(idx);
     }
-    
+
     public void addTask(Task task) {
         this.tasks.add(task);
     }
