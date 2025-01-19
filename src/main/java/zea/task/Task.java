@@ -1,4 +1,4 @@
-package Zea.task;
+package zea.task;
 
 import java.time.format.DateTimeFormatter;
 
@@ -29,5 +29,14 @@ public abstract class Task {
     @Override
     public String toString() {
         return "[" + this.getStatusIcon() + "] " + this.description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        return description.equals(((Task) o).description) && isDone == ((Task) o).isDone;
     }
 }

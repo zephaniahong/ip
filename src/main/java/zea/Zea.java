@@ -1,8 +1,8 @@
-package Zea;
+package zea;
 
-import Zea.command.Command;
-import Zea.task.Tasks;
-import Zea.ui.Ui;
+import zea.command.Command;
+import zea.task.Tasks;
+import zea.ui.Ui;
 
 public class Zea {
 
@@ -31,7 +31,7 @@ public class Zea {
                 assert c != null;
                 c.execute(tasks, ui, storage);
                 isExit = c.getExitStatus();
-            } catch (ZeaException e) {
+            } catch (ZeaException | ParseException e) {
                 ui.displayError(e.getMessage());
             }
         }

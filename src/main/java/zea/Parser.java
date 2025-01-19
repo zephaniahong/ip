@@ -1,13 +1,13 @@
-package Zea;
+package zea;
 
-import Zea.command.*;
-import Zea.task.Task;
+import zea.command.*;
+import zea.task.Task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 public class Parser {
-    public static Command parse(String fullCommand) {
+    public static Command parse(String fullCommand) throws ParseException {
         String[] tokens = fullCommand.split(" ", 2);
         String command = tokens[0];
         try {
@@ -61,7 +61,7 @@ public class Parser {
                 default:  // TODO: handle unknown command
                     throw new ParseException("Sorry, I do not understand that command. Try the following commands:\nlist\ntodo\ndeadline\nevent");
             }
-        } catch (DateTimeParseException | ParseException e) {
+        } catch (DateTimeParseException e) {
             System.out.println(e.getMessage());
         }
         // this should never happen

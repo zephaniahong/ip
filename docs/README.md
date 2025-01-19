@@ -1,4 +1,4 @@
-# Zea.Zea User Guide
+# zea.zea User Guide
 
 // Update the title above to match the actual product name
 

@@ -1,10 +1,10 @@
-package Zea.command;
+package zea.command;
 
-import Zea.Storage;
-import Zea.ZeaException;
-import Zea.task.Task;
-import Zea.task.Tasks;
-import Zea.ui.Ui;
+import zea.Storage;
+import zea.ZeaException;
+import zea.task.Task;
+import zea.task.Tasks;
+import zea.ui.Ui;
 
 public class DeleteCommand extends Command {
     int idx;

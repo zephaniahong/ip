@@ -1,9 +1,9 @@
-package Zea.command;
+package zea.command;
 
-import Zea.Storage;
-import Zea.ZeaException;
-import Zea.task.Tasks;
-import Zea.ui.Ui;
+import zea.Storage;
+import zea.ZeaException;
+import zea.task.Tasks;
+import zea.ui.Ui;
 
 public class MarkCommand extends Command {
     int idx;
@@ -20,5 +20,16 @@ public class MarkCommand extends Command {
         tasks.mark(this.idx);
         storage.save(tasks);
         ui.displayItem("Nice! I've marked this task as done:", tasks.getTask(idx), "");
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+        return idx == ((MarkCommand) other).idx;
     }
 }

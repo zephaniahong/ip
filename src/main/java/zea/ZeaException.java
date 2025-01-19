@@ -1,4 +1,4 @@
-package Zea;
+package zea;
 
 public class ZeaException extends Exception{
    public ZeaException(String message){

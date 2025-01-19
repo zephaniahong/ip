@@ -1,4 +1,4 @@
-package Zea;
+package zea;
 
 public class ParseException extends Exception {
 

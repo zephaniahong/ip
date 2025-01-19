@@ -1,6 +1,6 @@
-package Zea.ui;
+package zea.ui;
 
-import Zea.ZeaException;
+import zea.ZeaException;
 
 import java.util.ArrayList;
 import java.util.Objects;
