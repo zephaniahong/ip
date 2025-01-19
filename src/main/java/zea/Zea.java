@@ -11,14 +11,14 @@ public class Zea {
     protected final Ui ui;
 
     public Zea(String fp) {
-       this.ui = new Ui();
-       this.storage = new Storage(fp);
-       try {
-           this.tasks = new Tasks(storage.load());
-       } catch (ZeaException e) {
-           ui.showLoadingError(e);
-           tasks = new Tasks();
-       }
+        this.ui = new Ui();
+        this.storage = new Storage(fp);
+        try {
+            this.tasks = new Tasks(storage.load());
+        } catch (ZeaException e) {
+            ui.showLoadingError(e);
+            tasks = new Tasks();
+        }
     }
 
     public void run() {

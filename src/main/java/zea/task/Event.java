@@ -18,7 +18,7 @@ public class Event extends Task {
 
     @Override
     public String toFileFormattedString() {
-        return "E|" + (this.isDone ? "1":"0") + "|" + description + "|" + from.format(formatter) + "|" + to.format(formatter);
+        return "E|" + (this.isDone ? "1" : "0") + "|" + description + "|" + from.format(formatter) + "|" + to.format(formatter);
     }
 
     @Override

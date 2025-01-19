@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class DeadlineCommand extends Command {
-    private String description;
-    private LocalDateTime by;
+    private final String description;
+    private final LocalDateTime by;
 
     public DeadlineCommand(String description, LocalDateTime by) {
         this.description = description;

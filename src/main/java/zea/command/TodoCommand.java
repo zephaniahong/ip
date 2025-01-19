@@ -12,7 +12,7 @@ public class TodoCommand extends Command {
     String description;
 
     public TodoCommand(String description) {
-       this.description = description;
+        this.description = description;
     }
 
     @Override
