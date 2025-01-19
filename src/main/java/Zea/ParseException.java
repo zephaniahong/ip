@@ -1,3 +1,5 @@
+package Zea;
+
 public class ParseException extends Exception {
 
     public ParseException(String s) {

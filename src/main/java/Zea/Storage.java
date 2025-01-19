@@ -1,3 +1,7 @@
+package Zea;
+
+import Zea.task.*;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -25,7 +29,9 @@ public class Storage {
                             throw new ZeaException("Invalid file format");
                         }
                         Todo todo = new Todo(parts[2]);
-                        todo.isDone = Objects.equals(parts[1], "1");
+                        if (Objects.equals(parts[1], "1")) {
+                            todo.done();
+                        }
                         list.add(todo);
                         break;
                     }
@@ -35,7 +41,9 @@ public class Storage {
                         }
                         LocalDateTime byDateTime = LocalDateTime.parse(parts[3], Task.formatter);
                         Deadline deadline = new Deadline(parts[2], byDateTime);
-                        deadline.isDone = Objects.equals(parts[1], "1");
+                        if (Objects.equals(parts[1], "1")) {
+                            deadline.done();
+                        }
                         list.add(deadline);
                         break;
                     }
@@ -46,7 +54,9 @@ public class Storage {
                         LocalDateTime fromDateTime = LocalDateTime.parse(parts[3], Task.formatter);
                         LocalDateTime toDateTime = LocalDateTime.parse(parts[4], Task.formatter);
                         Event event = new Event(parts[2], fromDateTime, toDateTime);
-                        event.isDone = Objects.equals(parts[1], "1");
+                        if (Objects.equals(parts[1], "1")) {
+                            event.done();
+                        }
                         list.add(event);
                         break;
                     }

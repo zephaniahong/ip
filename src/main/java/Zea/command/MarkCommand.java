@@ -1,8 +1,15 @@
-public class UnmarkCommand extends Command{
+package Zea.command;
+
+import Zea.Storage;
+import Zea.ZeaException;
+import Zea.task.Tasks;
+import Zea.ui.Ui;
+
+public class MarkCommand extends Command {
     int idx;
 
-    public UnmarkCommand(int idx) {
-        this.idx = idx;
+    public MarkCommand(int idx) {
+       this.idx = idx;
     }
 
     @Override
@@ -10,8 +17,8 @@ public class UnmarkCommand extends Command{
         if (this.idx < 0 || this.idx >= tasks.getTotalTasks()) {
             throw new ZeaException("Invalid index. Please choose an index between 1 and " + tasks.getTotalTasks());
         }
-        tasks.unmark(this.idx);
+        tasks.mark(this.idx);
         storage.save(tasks);
-        ui.displayItem("Ok, I've marked this task as not done yet:", tasks.getTask(idx), "");
+        ui.displayItem("Nice! I've marked this task as done:", tasks.getTask(idx), "");
     }
 }

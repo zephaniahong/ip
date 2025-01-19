@@ -1,4 +1,12 @@
-public class TodoCommand extends Command{
+package Zea.command;
+
+import Zea.Storage;
+import Zea.ZeaException;
+import Zea.task.Tasks;
+import Zea.task.Todo;
+import Zea.ui.Ui;
+
+public class TodoCommand extends Command {
     String description;
 
     public TodoCommand(String description) {
