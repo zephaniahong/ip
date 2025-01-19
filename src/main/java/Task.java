@@ -1,4 +1,7 @@
+import java.time.format.DateTimeFormatter;
+
 public abstract class Task {
+    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     protected String description;
     protected boolean isDone;
 
