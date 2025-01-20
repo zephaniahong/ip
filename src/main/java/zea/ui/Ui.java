@@ -33,7 +33,6 @@ public class Ui {
     }
 
 
-    public <T> void displayItem(String header, T item, String footer) {
     /**
      * Displays a single item along with a header and footer
      * @param header - a message before the item is displayed
