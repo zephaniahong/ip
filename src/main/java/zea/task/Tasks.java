@@ -1,6 +1,7 @@
 package zea.task;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Tasks {
     ArrayList<Task> tasks;
@@ -57,5 +58,9 @@ public class Tasks {
 
     public ArrayList<Task> getAllTasks() {
         return this.tasks;
+    }
+
+    public ArrayList<Task> find(String keyword) {
+        return this.tasks.stream().filter(t -> t.description.contains(keyword)).collect(Collectors.toCollection(ArrayList::new));
     }
 }
