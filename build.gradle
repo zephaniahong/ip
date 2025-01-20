@@ -31,7 +31,7 @@ test {
 mainClassName = "zea.Zea"
 
 application {
-    mainClass.set("zea.Zea")
+    mainClass.set("Zea")
 }
 
 shadowJar {

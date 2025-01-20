@@ -14,7 +14,7 @@ public class Deadline extends Task {
 
     @Override
     public String toFileFormattedString() {
-        return "D|" + (this.isDone ? "1":"0") + "|" + this.description + "|" + this.by.format(formatter);
+        return "D|" + (this.isDone ? "1" : "0") + "|" + this.description + "|" + this.by.format(formatter);
     }
 
     @Override

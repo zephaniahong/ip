@@ -7,6 +7,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 public class Parser {
+    /**
+     *
+     * @param fullCommand - a String of the command to be parsed
+     * @return a <code>Command</code> to be executed
+     * @throws ParseException - if the fullCommand syntax is invalid
+     */
     public static Command parse(String fullCommand) throws ParseException {
         String[] tokens = fullCommand.split(" ", 2);
         String command = tokens[0];

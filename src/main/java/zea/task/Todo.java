@@ -7,7 +7,7 @@ public class Todo extends Task {
     }
 
     public String toFileFormattedString() {
-        return "T|" + (this.isDone ? "1":"0") + "|" + this.description;
+        return "T|" + (this.isDone ? "1" : "0") + "|" + this.description;
     }
 
     @Override

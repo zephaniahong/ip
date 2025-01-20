@@ -9,7 +9,7 @@ public class MarkCommand extends Command {
     int idx;
 
     public MarkCommand(int idx) {
-       this.idx = idx;
+        this.idx = idx;
     }
 
     @Override

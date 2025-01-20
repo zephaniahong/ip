@@ -14,6 +14,10 @@ public class Tasks {
         this.tasks = tasks;
     }
 
+    /**
+     *
+     * @return the total number of tasks
+     */
     public int getTotalTasks() {
         return this.tasks.size();
     }
@@ -21,21 +25,33 @@ public class Tasks {
     public Task getTask(int idx) {
         return this.tasks.get(idx);
     }
-    
+
     public void addTask(Task task) {
         this.tasks.add(task);
     }
 
+    /**
+     *
+     * @param i - 1-based index of the task to be marked as complete
+     */
     public void mark(int i) {
         Task t = this.tasks.get(i);
         t.done();
     }
 
+    /**
+     *
+     * @param i - 1-based index of the task to be unmarked
+     */
     public void unmark(int i) {
         Task t = this.tasks.get(i);
         t.undone();
     }
 
+    /**
+     *
+     * @param i - 1-based index of the task to be deleted
+     */
     public void delete(int i) {
         this.tasks.remove(i);
     }
