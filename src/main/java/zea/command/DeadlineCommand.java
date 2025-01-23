@@ -28,11 +28,11 @@ public class DeadlineCommand extends Command {
     }
 
     @Override
-    public void execute(Tasks tasks, Ui ui, Storage storage) throws ZeaException {
+    public String execute(Tasks tasks, Storage storage) throws ZeaException {
         Deadline d = new Deadline(this.description, this.by);
         tasks.addTask(d);
         storage.save(tasks);
-        ui.displayItem("Great! I've created a new deadline for you!", d, "You now have "
+        return Ui.formatItem("Great! I've created a new deadline for you!", d, "You now have "
                 + tasks.getTotalTasks() + " tasks");
     }
 

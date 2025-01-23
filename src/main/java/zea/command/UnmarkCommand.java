@@ -16,13 +16,13 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(Tasks tasks, Ui ui, Storage storage) throws ZeaException {
+    public String execute(Tasks tasks, Storage storage) throws ZeaException {
         if (this.idx < 0 || this.idx >= tasks.getTotalTasks()) {
             throw new ZeaException("Invalid index. Please choose an index between 1 and " + tasks.getTotalTasks());
         }
         tasks.unmark(this.idx);
         storage.save(tasks);
-        ui.displayItem("Ok, I've marked this task as not done yet:", tasks.getTask(idx), "");
+        return Ui.formatItem("Ok, I've marked this task as not done yet:", tasks.getTask(idx), "");
     }
 
     @Override

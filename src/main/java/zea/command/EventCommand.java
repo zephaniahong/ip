@@ -8,7 +8,6 @@ import zea.task.Event;
 import zea.task.Tasks;
 import zea.ui.Ui;
 
-
 /**
  * A command for creating Events
  */
@@ -30,11 +29,11 @@ public class EventCommand extends Command {
     }
 
     @Override
-    public void execute(Tasks tasks, Ui ui, Storage storage) throws ZeaException {
+    public String execute(Tasks tasks, Storage storage) throws ZeaException {
         Event e = new Event(this.description, this.from, this.to);
         tasks.addTask(e);
         storage.save(tasks);
-        ui.displayItem("Great! I've added a new event for you:", e, "You now have "
-                + tasks.getTotalTasks() + " task(s)");
+        return Ui.formatItem("Great! I've added a new event for you:", e,
+                "You now have " + tasks.getTotalTasks() + " task(s)");
     }
 }

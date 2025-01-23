@@ -3,7 +3,6 @@ package zea.command;
 import zea.Storage;
 import zea.ZeaException;
 import zea.task.Tasks;
-import zea.ui.Ui;
 
 /**
  * An abstract class for Commands
@@ -19,7 +18,7 @@ public abstract class Command {
         return this.isExit;
     }
 
-    public abstract void execute(Tasks tasks, Ui ui, Storage storage) throws ZeaException;
+    public abstract String execute(Tasks tasks, Storage storage) throws ZeaException;
 
     @Override
     public boolean equals(Object obj) {

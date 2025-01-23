@@ -2,7 +2,6 @@ package zea.command;
 
 import zea.Storage;
 import zea.task.Tasks;
-import zea.ui.Ui;
 
 /**
  * A command for exiting the program
@@ -13,9 +12,7 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    public void execute(Tasks tasks, Ui ui, Storage storage) {
-        System.out.println("----------------------");
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println("----------------------");
+    public String execute(Tasks tasks, Storage storage) {
+        return "Bye. Hope to see you again soon!";
     }
 }

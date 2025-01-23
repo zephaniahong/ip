@@ -1,5 +1,7 @@
 package zea.fx;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,7 +9,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import zea.Zea;
 
-import java.io.IOException;
 
 /**
  * Main class to start running the GUI

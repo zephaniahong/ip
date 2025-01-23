@@ -1,8 +1,12 @@
 package zea;
 
 import zea.command.Command;
+import zea.command.ExitCommand;
 import zea.task.Tasks;
 import zea.ui.Ui;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Zea
@@ -30,30 +34,20 @@ public class Zea {
     }
 
     public String getResponse(String input) {
-        return "Zea heard: " + input;
-    }
-
-    /**
-     * Runs the program
-     */
-    public void run() {
-        ui.showWelcome();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                Command c = Parser.parse(fullCommand);
-                assert c != null;
-                c.execute(tasks, ui, storage);
-                isExit = c.getExitStatus();
-            } catch (ZeaException | ParseException e) {
-                ui.displayError(e.getMessage());
+        try {
+            Command c = Parser.parse(input);
+            if (c instanceof ExitCommand) {
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        System.exit(0);
+                    }
+                }, 2000);
             }
+            assert c != null;
+            return c.execute(tasks, storage);
+        } catch (ZeaException | ParseException e) {
+            return e.getMessage();
         }
-        this.ui.close();
-    }
-
-    public static void main(String[] args) {
-        new Zea("data/zea.txt").run();
     }
 }

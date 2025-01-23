@@ -20,8 +20,8 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute(Tasks tasks, Ui ui, Storage storage) throws ZeaException {
+    public String execute(Tasks tasks, Storage storage) throws ZeaException {
         ArrayList<Task> filteredTasks = tasks.find(this.keyword);
-        ui.displayWithNumbering("Here are the tasks that match the keyword: " + this.keyword, filteredTasks);
+        return Ui.formatWithNumbering("Here are the tasks that match the keyword: " + this.keyword, filteredTasks);
     }
 }
