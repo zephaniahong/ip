@@ -1,9 +1,6 @@
 package zea;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import zea.task.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,6 +8,17 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import zea.task.Deadline;
+import zea.task.Event;
+import zea.task.Task;
+import zea.task.Tasks;
+import zea.task.Todo;
+
+
 
 
 public class StorageTest {
@@ -25,8 +33,9 @@ public class StorageTest {
         Storage storage = new Storage("./data/test.txt");
         ArrayList<Task> expectedTasks = new ArrayList<>();
         expectedTasks.add(new Todo("read book"));
-        expectedTasks.add(new Deadline("return book", LocalDateTime.parse("01/01/2025 10:00", Task.formatter)));
-        expectedTasks.add(new Event("wedding", LocalDateTime.parse("01/01/2025 10:00", Task.formatter), LocalDateTime.parse("01/01/2025 10:00", Task.formatter).plusHours(2)));
+        expectedTasks.add(new Deadline("return book", LocalDateTime.parse("01/01/2025 10:00", Task.FORMATTER)));
+        expectedTasks.add(new Event("wedding", LocalDateTime.parse("01/01/2025 10:00", Task.FORMATTER),
+                LocalDateTime.parse("01/01/2025 10:00", Task.FORMATTER).plusHours(2)));
 
         ArrayList<Task> actualTasks = storage.load();
 

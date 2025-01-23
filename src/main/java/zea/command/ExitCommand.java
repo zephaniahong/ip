@@ -4,6 +4,9 @@ import zea.Storage;
 import zea.task.Tasks;
 import zea.ui.Ui;
 
+/**
+ * A command for exiting the program
+ */
 public class ExitCommand extends Command {
     public ExitCommand() {
         this.isExit = true;

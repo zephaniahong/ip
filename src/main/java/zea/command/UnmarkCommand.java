@@ -5,8 +5,11 @@ import zea.ZeaException;
 import zea.task.Tasks;
 import zea.ui.Ui;
 
+/**
+ * A command for marking a task as done
+ */
 public class UnmarkCommand extends Command {
-    int idx;
+    private int idx;
 
     public UnmarkCommand(int idx) {
         this.idx = idx;

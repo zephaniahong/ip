@@ -4,12 +4,19 @@ import zea.command.Command;
 import zea.task.Tasks;
 import zea.ui.Ui;
 
+/**
+ * Zea
+ */
 public class Zea {
 
     protected Tasks tasks;
     protected Storage storage;
     protected final Ui ui;
 
+    /**
+     * Creates a new instance of Zea
+     * @param fp - The filepath of where existing todos are stored
+     */
     public Zea(String fp) {
         this.ui = new Ui();
         this.storage = new Storage(fp);
@@ -21,6 +28,9 @@ public class Zea {
         }
     }
 
+    /**
+     * Runs the program
+     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;
