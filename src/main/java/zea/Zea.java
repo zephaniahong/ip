@@ -15,6 +15,7 @@ public class Zea {
 
     /**
      * Creates a new instance of Zea
+     *
      * @param fp - The filepath of where existing todos are stored
      */
     public Zea(String fp) {
@@ -26,6 +27,10 @@ public class Zea {
             ui.showLoadingError(e);
             tasks = new Tasks();
         }
+    }
+
+    public String getResponse(String input) {
+        return "Zea heard: " + input;
     }
 
     /**
