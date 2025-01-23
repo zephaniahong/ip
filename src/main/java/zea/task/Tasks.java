@@ -68,4 +68,14 @@ public class Tasks {
         return this.tasks.stream().filter(t ->
                 t.description.contains(keyword)).collect(Collectors.toCollection(ArrayList::new));
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Task task : this.tasks) {
+            sb.append(task.toString());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

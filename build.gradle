@@ -36,7 +36,7 @@ test {
 mainClassName = "zea.Zea"
 
 application {
-    mainClass.set("Zea")
+    mainClass.set("zea.fx.Launcher")
 }
 
 shadowJar {

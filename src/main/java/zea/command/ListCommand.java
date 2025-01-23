@@ -9,7 +9,7 @@ import zea.ui.Ui;
  */
 public class ListCommand extends Command {
     @Override
-    public void execute(Tasks tasks, Ui ui, Storage storage) {
-        ui.displayWithNumbering("Here are your tasks", tasks.getAllTasks());
+    public String execute(Tasks tasks, Storage storage) {
+        return Ui.formatWithNumbering("Here are your tasks", tasks.getAllTasks());
     }
 }
