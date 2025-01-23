@@ -1,13 +1,17 @@
 package zea.ui;
 
-import zea.ZeaException;
-
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
+import zea.ZeaException;
+
+
+/**
+ * Handles interactions with the user
+ */
 public class Ui {
-    Scanner scanner;
+    private Scanner scanner;
 
     public Ui() {
         this.scanner = new Scanner(System.in);
@@ -52,9 +56,9 @@ public class Ui {
 
     /**
      * Displays all the items with numbering
-     * @param header- a message before the item is displayed
+     * @param header - a message before the item is displayed
      * @param list - a list of items to be printed
-     * @param <T>- any type that can be printed
+     * @param <T> - any type that can be printed
      */
     public <T> void displayWithNumbering(String header, ArrayList<T> list) {
         System.out.println("----------------------");
@@ -66,6 +70,10 @@ public class Ui {
         System.out.println("----------------------");
     }
 
+    /**
+     * Displays the given error message
+     * @param message - error message to be displayed
+     */
     public void displayError(String message) {
         System.out.println("----------------------");
         System.out.println(message);

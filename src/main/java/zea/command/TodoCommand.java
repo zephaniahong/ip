@@ -1,15 +1,18 @@
 package zea.command;
 
+import java.util.Objects;
+
 import zea.Storage;
 import zea.ZeaException;
 import zea.task.Tasks;
 import zea.task.Todo;
 import zea.ui.Ui;
 
-import java.util.Objects;
-
+/**
+ * A command for creating a todo
+ */
 public class TodoCommand extends Command {
-    String description;
+    private String description;
 
     public TodoCommand(String description) {
         this.description = description;
@@ -23,7 +26,8 @@ public class TodoCommand extends Command {
         Todo t = new Todo(description);
         tasks.addTask(t);
         storage.save(tasks);
-        ui.displayItem("Got it. I've added this task:", t, "Now you have " + tasks.getTotalTasks() + " tasks in the list");
+        ui.displayItem("Got it. I've added this task:", t, "Now you have "
+                + tasks.getTotalTasks() + " tasks in the list");
     }
 
     @Override

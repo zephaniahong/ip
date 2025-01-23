@@ -6,8 +6,11 @@ import zea.task.Task;
 import zea.task.Tasks;
 import zea.ui.Ui;
 
+/**
+ * A command for deleting tasks
+ */
 public class DeleteCommand extends Command {
-    int idx;
+    private int idx;
 
     public DeleteCommand(int idx) {
         this.idx = idx;

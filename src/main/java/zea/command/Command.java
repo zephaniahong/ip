@@ -5,6 +5,9 @@ import zea.ZeaException;
 import zea.task.Tasks;
 import zea.ui.Ui;
 
+/**
+ * An abstract class for Commands
+ */
 public abstract class Command {
     protected boolean isExit;
 

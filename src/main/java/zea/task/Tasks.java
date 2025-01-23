@@ -3,8 +3,11 @@ package zea.task;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+/**
+ * A collection of Task
+ */
 public class Tasks {
-    ArrayList<Task> tasks;
+    private ArrayList<Task> tasks;
 
     public Tasks() {
         this.tasks = new ArrayList<>();
@@ -15,7 +18,6 @@ public class Tasks {
     }
 
     /**
-     *
      * @return the total number of tasks
      */
     public int getTotalTasks() {
@@ -31,7 +33,6 @@ public class Tasks {
     }
 
     /**
-     *
      * @param i - 1-based index of the task to be marked as complete
      */
     public void mark(int i) {
@@ -40,7 +41,6 @@ public class Tasks {
     }
 
     /**
-     *
      * @param i - 1-based index of the task to be unmarked
      */
     public void unmark(int i) {
@@ -49,7 +49,6 @@ public class Tasks {
     }
 
     /**
-     *
      * @param i - 1-based index of the task to be deleted
      */
     public void delete(int i) {
@@ -60,7 +59,13 @@ public class Tasks {
         return this.tasks;
     }
 
+    /**
+     * Finds all Task whose description contains the keyword
+     * @param keyword - the keyword to search for
+     * @return ArrayList of Task
+     */
     public ArrayList<Task> find(String keyword) {
-        return this.tasks.stream().filter(t -> t.description.contains(keyword)).collect(Collectors.toCollection(ArrayList::new));
+        return this.tasks.stream().filter(t ->
+                t.description.contains(keyword)).collect(Collectors.toCollection(ArrayList::new));
     }
 }
