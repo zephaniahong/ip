@@ -76,13 +76,14 @@ public class Parser {
             }
             case "delete": {
                 int idx = Integer.parseInt(tokens[1]) - 1; // subtract 1 to convert list number to array idx
+                assert(idx >= 1);
                 return new DeleteCommand(idx);
             }
             case "find": {
                 String keyword = tokens[1].strip();
                 return new FindCommand(keyword);
             }
-            default: // TODO: handle unknown command
+            default:
                 throw new ParseException("Sorry, I do not understand that command. "
                         + "Try the following commands:\nlist\ntodo\ndeadline\nevent");
             }
