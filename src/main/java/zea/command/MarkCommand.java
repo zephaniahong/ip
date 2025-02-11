@@ -15,9 +15,13 @@ public class MarkCommand extends Command {
         this.idx = idx;
     }
 
+    private boolean isValidIndex(int idx, Tasks tasks) {
+        return idx >= 0 && idx < tasks.getTotalTasks();
+    }
+
     @Override
     public String execute(Tasks tasks, Storage storage) throws ZeaException {
-        if (this.idx < 0 || this.idx >= tasks.getTotalTasks()) {
+        if (isValidIndex(idx, tasks)) {
             throw new ZeaException("Invalid index. Please choose an index between 1 and " + tasks.getTotalTasks());
         }
         tasks.mark(this.idx);
