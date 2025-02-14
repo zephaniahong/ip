@@ -1,6 +1,7 @@
 package zea.task;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  * A task of type event that has both a start and end datetime
@@ -24,13 +25,22 @@ public class Event extends Task {
 
     @Override
     public String toFileFormattedString() {
+        ArrayList<String> tags = this.getTags();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tags.size(); i++) {
+            if (i != tags.size() - 1) {
+                sb.append(tags.get(i)).append(',');
+            } else {
+                sb.append(tags.get(i));
+            }
+        }
         return "E|" + (this.isDone ? "1" : "0") + "|" + description + "|"
-                + from.format(FORMATTER) + "|" + to.format(FORMATTER);
+                + from.format(FORMATTER) + "|" + to.format(FORMATTER) + "|" + sb;
     }
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + "(from: " + from + " to: " + to + ")";
+        return "[E]" + super.toString() + "(from: " + from + " to: " + to + ")\n";
     }
 
     @Override

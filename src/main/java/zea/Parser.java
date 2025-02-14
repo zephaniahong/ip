@@ -83,7 +83,18 @@ public class Parser {
                 String keyword = tokens[1].strip();
                 return new FindCommand(keyword);
             }
-            default:
+            case "tag": {
+                String[] subtokens = tokens[1].split(" ", 2);
+                if (subtokens.length < 2) {
+                    throw new ParseException("Incorrect format of tag. "
+                            + "Please use the following format: tag <number> <tag name>*");
+                }
+                int idx = Integer.parseInt(subtokens[0].strip()) - 1;
+                String tagStrings = subtokens[1].strip();
+                String[] tags = tagStrings.split(" ");
+                return new TagCommand(idx, tags);
+            }
+            default: // TODO: handle unknown command
                 throw new ParseException("Sorry, I do not understand that command. "
                         + "Try the following commands:\nlist\ntodo\ndeadline\nevent");
             }

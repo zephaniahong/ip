@@ -65,4 +65,8 @@ public class Ui {
         }
         return sb.toString();
     }
+
+    public static String displayMessage(String message) {
+        return message;
+    }
 }

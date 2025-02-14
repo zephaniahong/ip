@@ -1,6 +1,7 @@
 package zea.task;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 /**
  * An abstract Task class
@@ -9,6 +10,7 @@ public abstract class Task {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     protected String description;
     protected boolean isDone;
+    private ArrayList<String> tags;
 
     /**
      * Constructor for Task
@@ -17,10 +19,15 @@ public abstract class Task {
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+        this.tags = new ArrayList<>();
     }
 
     public String getStatusIcon() {
         return (isDone ? "X" : " "); // mark done task with X
+    }
+
+    public ArrayList<String> getTags() {
+        return tags;
     }
 
     public void done() {
@@ -31,11 +38,22 @@ public abstract class Task {
         this.isDone = false;
     }
 
+    public void addTag(String tag) {
+        this.tags.add(tag);
+    }
+
     public abstract String toFileFormattedString();
 
     @Override
     public String toString() {
-        return "[" + this.getStatusIcon() + "] " + this.description;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tags.size(); i++) {
+            sb.append("#").append(tags.get(i));
+            if (i < tags.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        return "[" + this.getStatusIcon() + "] " + this.description + "\n tags: " + sb + "\n";
     }
 
     @Override
