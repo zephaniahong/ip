@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import zea.task.Deadline;
@@ -38,12 +39,20 @@ public class Storage {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("\\|");
+                System.out.println(Arrays.toString(parts));
                 switch (parts[0]) {
                 case "T": {
-                    if (parts.length != 3) {
+                    if (parts.length < 3) {
                         throw new ZeaException("Invalid file format");
                     }
                     Todo todo = new Todo(parts[2]);
+                    if (parts.length == 4) {
+                        String unformattedTags = parts[3];
+                        String[] tags = unformattedTags.split(",");
+                        for (String tag : tags) {
+                            todo.addTag(tag);
+                        }
+                    }
                     if (Objects.equals(parts[1], "1")) {
                         todo.done();
                     }
@@ -51,11 +60,19 @@ public class Storage {
                     break;
                 }
                 case "D": {
-                    if (parts.length != 4) {
+                    if (parts.length < 4) {
                         throw new ZeaException("Invalid file format");
                     }
                     LocalDateTime byDateTime = LocalDateTime.parse(parts[3], Task.FORMATTER);
                     Deadline deadline = new Deadline(parts[2], byDateTime);
+                    // There is a possibility that there are no tags
+                    if (parts.length == 5) {
+                        String unformattedTags = parts[4];
+                        String[] tags = unformattedTags.split(",");
+                        for (String tag : tags) {
+                            deadline.addTag(tag);
+                        }
+                    }
                     if (Objects.equals(parts[1], "1")) {
                         deadline.done();
                     }
@@ -63,12 +80,19 @@ public class Storage {
                     break;
                 }
                 case "E": {
-                    if (parts.length != 5) {
+                    if (parts.length < 5) {
                         throw new ZeaException("Invalid file format");
                     }
                     LocalDateTime fromDateTime = LocalDateTime.parse(parts[3], Task.FORMATTER);
                     LocalDateTime toDateTime = LocalDateTime.parse(parts[4], Task.FORMATTER);
                     Event event = new Event(parts[2], fromDateTime, toDateTime);
+                    if (parts.length == 6) {
+                        String unformattedTags = parts[5];
+                        String[] tags = unformattedTags.split(",");
+                        for (String tag : tags) {
+                            event.addTag(tag);
+                        }
+                    }
                     if (Objects.equals(parts[1], "1")) {
                         event.done();
                     }
@@ -79,7 +103,7 @@ public class Storage {
                     throw new ZeaException("Invalid file format");
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException | ZeaException e) {
             System.out.println(e.getMessage());
         }
         return list;

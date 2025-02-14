@@ -3,16 +3,7 @@ package zea;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
-import zea.command.Command;
-import zea.command.DeadlineCommand;
-import zea.command.DeleteCommand;
-import zea.command.EventCommand;
-import zea.command.ExitCommand;
-import zea.command.FindCommand;
-import zea.command.ListCommand;
-import zea.command.MarkCommand;
-import zea.command.TodoCommand;
-import zea.command.UnmarkCommand;
+import zea.command.*;
 import zea.task.Task;
 
 /**
@@ -49,7 +40,7 @@ public class Parser {
                 String[] unformattedDeadline = tokens[1].split("/", 2);
                 if (unformattedDeadline.length != 2) {
                     throw new ParseException("Incorrect format of deadline. Please use the following format: "
-                            + "deadline <DESCRIPTION> /by <DATE>");
+                            + "deadline <DESCRIPTION> /by " + "<" + Task.FORMATTER + ">");
                 }
                 String description = unformattedDeadline[0].strip();
                 String by = unformattedDeadline[1].split(" ", 2)[1].strip(); // idx 0 is by. The rest is the date/time
@@ -81,6 +72,17 @@ public class Parser {
             case "find": {
                 String keyword = tokens[1].strip();
                 return new FindCommand(keyword);
+            }
+            case "tag": {
+                String[] subtokens = tokens[1].split(" ", 2);
+                if (subtokens.length < 2) {
+                    throw new ParseException("Incorrect format of tag. "
+                            + "Please use the following format: tag <number> <tag name>*");
+                }
+                int idx = Integer.parseInt(subtokens[0].strip()) - 1;
+                String tagStrings = subtokens[1].strip();
+                String[] tags = tagStrings.split(" ");
+                return new TagCommand(idx, tags);
             }
             default: // TODO: handle unknown command
                 throw new ParseException("Sorry, I do not understand that command. "
