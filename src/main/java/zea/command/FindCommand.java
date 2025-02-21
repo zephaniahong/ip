@@ -1,7 +1,6 @@
 package zea.command;
 
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
 import zea.Storage;
 import zea.ZeaException;
