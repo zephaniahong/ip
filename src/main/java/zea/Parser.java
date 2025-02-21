@@ -35,18 +35,34 @@ public class Parser {
             case "list": // Print out all commands in store
                 return new ListCommand();
             case "mark": {
+                if (tokens.length == 1) {
+                    throw new ParseException("Incorrect format of mark. Please use the following format: "
+                            + "mark <IDX>");
+                }
                 int idx = Integer.parseInt(tokens[1]) - 1; // subtract 1 to convert list number to array idx
                 return new MarkCommand(idx);
             }
             case "unmark": {
+                if (tokens.length == 1) {
+                    throw new ParseException("Incorrect format of unmark. Please use the following format: "
+                            + "unmark <IDX>");
+                }
                 int idx = Integer.parseInt(tokens[1]) - 1; // subtract 1 to convert list number to array idx
                 return new UnmarkCommand(idx);
             }
             case "todo": {
+                if (tokens.length == 1) {
+                    throw new ParseException("Incorrect format of todo. Please use the following format: "
+                            + "todo <DESCRIPTION>");
+                }
                 String description = tokens[1].strip();
                 return new TodoCommand(description);
             }
             case "deadline": {
+                if (tokens.length == 1) {
+                    throw new ParseException("Incorrect format of deadline. Please use the following format: "
+                            + "deadline <DESCRIPTION> /by <DATE>");
+                }
                 String[] unformattedDeadline = tokens[1].split("/", 2);
                 if (unformattedDeadline.length != 2) {
                     throw new ParseException("Incorrect format of deadline. Please use the following format: "
@@ -58,6 +74,10 @@ public class Parser {
                 return new DeadlineCommand(description, byDateTime);
             }
             case "event": {
+                if (tokens.length == 1) {
+                    throw new ParseException("Incorrect format of event. Please use the following format: "
+                            + "event <DESCRIPTION> /from <DATE> /to <DATE>");
+                }
                 String[] unformattedEvent = tokens[1].split("/from"); // description, from and to
                 if (unformattedEvent.length != 2) {
                     throw new ParseException("Incorrect format of event. Please use the following format: "
@@ -76,15 +96,27 @@ public class Parser {
                 return new EventCommand(description, fromDateTime, toDateTime);
             }
             case "delete": {
+                if (tokens.length == 1) {
+                    throw new ParseException("Incorrect format of delete. Please use the following format: "
+                            + "delete <IDX>");
+                }
                 int idx = Integer.parseInt(tokens[1]) - 1; // subtract 1 to convert list number to array idx
                 assert(idx >= 1);
                 return new DeleteCommand(idx);
             }
             case "find": {
+                if (tokens.length == 1) {
+                    throw new ParseException("Incorrect format of find. Please use the following format: "
+                            + "find <KEYWORD>");
+                }
                 String keyword = tokens[1].strip();
                 return new FindCommand(keyword);
             }
             case "tag": {
+                if (tokens.length == 1) {
+                    throw new ParseException("Incorrect format of tag. Please use the following format: "
+                            + "tag <IDX> <TAG>*");
+                }
                 String[] subtokens = tokens[1].split(" ", 2);
                 if (subtokens.length < 2) {
                     throw new ParseException("Incorrect format of tag. "
@@ -97,7 +129,7 @@ public class Parser {
             }
             default: // TODO: handle unknown command
                 throw new ParseException("Sorry, I do not understand that command. "
-                        + "Try the following commands:\nlist\ntodo\ndeadline\nevent");
+                        + "Try the following commands:\nlist\ntodo\ndeadline\nevent\nmark\nunmark\nbye");
             }
         } catch (DateTimeParseException e) {
             System.out.println(e.getMessage());
