@@ -48,7 +48,6 @@ test {
     }
 }
 
-mainClassName = "zea.Zea"
 
 application {
     mainClass.set("zea.fx.Launcher")
