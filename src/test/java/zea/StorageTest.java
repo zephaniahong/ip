@@ -50,7 +50,7 @@ public class StorageTest {
         storage.save(tasks);
         List<String> lines = Files.readAllLines(Path.of("./data/testsave.txt"));
         assertEquals(1, lines.size());
-        assertEquals("T|0|save me", lines.get(0));
+        assertEquals("T|0|save me|", lines.get(0));
     }
 
 }
