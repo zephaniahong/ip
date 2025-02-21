@@ -21,7 +21,7 @@ public class MarkCommand extends Command {
 
     @Override
     public String execute(Tasks tasks, Storage storage) throws ZeaException {
-        if (isValidIndex(idx, tasks)) {
+        if (!isValidIndex(idx, tasks)) {
             throw new ZeaException("Invalid index. Please choose an index between 1 and " + tasks.getTotalTasks());
         }
         tasks.mark(this.idx);
