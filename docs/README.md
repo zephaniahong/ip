@@ -60,6 +60,17 @@ You now have 4 tasks
 tags:#nike,#adidas,#jordans
 ```
 
+## Find a Task
+- Find a task whose description contains a specified keyword
+- Command: `find <KEYWORD>`
+- Example: `find home`
+```aiignore
+Here are the tasks that match the keyword: home
+1. [D][] finish homework
+tags:
+(by: 2030-12-05T23:55)
+```
+
 ## Mark as completed
 - Mark a task as completed
 - Command: `mark <IDX>`
