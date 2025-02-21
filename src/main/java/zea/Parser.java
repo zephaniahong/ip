@@ -11,6 +11,7 @@ import zea.command.ExitCommand;
 import zea.command.FindCommand;
 import zea.command.ListCommand;
 import zea.command.MarkCommand;
+import zea.command.TagCommand;
 import zea.command.TodoCommand;
 import zea.command.UnmarkCommand;
 import zea.task.Task;

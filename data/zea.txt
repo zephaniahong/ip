@@ -3,7 +3,7 @@ D|1|return book|06/12/2025 12:30|
 E|0|project meeting|09/06/2025 14:00|09/06/2025 15:00|
 T|1|join sports club|
 D|0|buy chicken|05/05/2025 14:00|hello,bye
-E|1|wedding|26/03/2025 12:15|29/03/2025 18:30|
+E|1|wedding|26/03/2025 12:15|29/03/2025 18:30|chicken
 D|0|sell rice|29/12/2025 18:35|hi,bye,hello,hey
 D|1|sell pork|26/01/2025 15:00|
 E|0|armpit|12/12/2025 15:15|12/12/2025 18:45|
