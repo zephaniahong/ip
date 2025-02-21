@@ -1,6 +1,6 @@
 # Zea User Guide
 
-![screenshot](/docs/Ui.png)
+![screenshot](Ui.png)
 - Zea is a chatbot that helps users keep track of tasks such as todos, deadlines and events
 
 ## List Tasks
