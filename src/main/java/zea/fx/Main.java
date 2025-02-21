@@ -24,6 +24,7 @@ public class Main extends Application {
             Scene scene = new Scene(root);
 
             stage.setScene(scene);
+            stage.setTitle("Zea");
             stage.setMinHeight(220);
             stage.setMinWidth(417);
             fxmlLoader.<MainWindow>getController().setZea(zea);
