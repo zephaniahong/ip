@@ -16,7 +16,7 @@ tags: #fiction
 - Add a todo to the list of tasks
 - Command: `todo <DESCRIPTION>`
 - Example: `todo buy shoes`
-```aiignore
+```
 Got it. I've added this task: 
 [T][] buy shoes
 tags: 
@@ -29,7 +29,7 @@ Now you have 2 tasks in the list
 - Command: `deadline <DESCRIPTION> /by <DATE>`
 - Example: `deadline finish homework /by 05/12/2030 23:55`
 
-```aiignore
+```
 Great! I've created a new deadline for you!
 [D][] finish homework
 tags:
@@ -42,7 +42,7 @@ You now have 3 tasks
 - Add an event to the list of tasks
 - Command: `event <DESCRIPTION> /from <DATE> /to <DATE>`
 - Example: `event wedding /from 03/05/2025 12:00 /to 03/05/2025 15:00`
-```aiignore
+```
 Great! I've created a new event for you!
 [E][] wedding
 tags:
@@ -55,7 +55,7 @@ You now have 4 tasks
 - Add tag(s) to a task
 - Command: `tag <IDX> <TAG>*`
 - Example: `tag 2 nike adidas jordans`
-```aiignore
+```
 [T][] buy shoes
 tags:#nike,#adidas,#jordans
 ```
@@ -64,7 +64,7 @@ tags:#nike,#adidas,#jordans
 - Find a task whose description contains a specified keyword
 - Command: `find <KEYWORD>`
 - Example: `find home`
-```aiignore
+```
 Here are the tasks that match the keyword: home
 1. [D][] finish homework
 tags:
@@ -75,7 +75,7 @@ tags:
 - Mark a task as completed
 - Command: `mark <IDX>`
 - Example: `mark 2`
-```aiignore
+```
 [T][X] buy shoes
 tags:#nike,#adidas,#jordans
 ```
@@ -84,7 +84,7 @@ tags:#nike,#adidas,#jordans
 - Mark a task as not completed
 - Command: `unmark <IDX>`
 - Example: `mark 2`
-```aiignore
+```
 [T][] buy shoes
 tags:#nike,#adidas,#jordans
 ```
@@ -93,7 +93,7 @@ tags:#nike,#adidas,#jordans
 - Delete a task from the list permanently
 - Command: `delete <IDX>`
 - Example: `delete 2`
-```aiignore
+```
 Sad to see this task go:
 [T][] buy shoes
 tags:#nike,#adidas,#jordans
