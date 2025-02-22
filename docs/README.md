@@ -6,6 +6,7 @@
 ## List Tasks
 - Lists all existing tasks
 - Command: `list`
+ 
 ```
 Here are your tasks
 1. [T][X] read book
@@ -16,6 +17,7 @@ tags: #fiction
 - Add a todo to the list of tasks
 - Command: `todo <DESCRIPTION>`
 - Example: `todo buy shoes`
+
 ```
 Got it. I've added this task: 
 [T][] buy shoes
@@ -42,6 +44,7 @@ You now have 3 tasks
 - Add an event to the list of tasks
 - Command: `event <DESCRIPTION> /from <DATE> /to <DATE>`
 - Example: `event wedding /from 03/05/2025 12:00 /to 03/05/2025 15:00`
+
 ```
 Great! I've created a new event for you!
 [E][] wedding
@@ -55,6 +58,7 @@ You now have 4 tasks
 - Add tag(s) to a task
 - Command: `tag <IDX> <TAG>*`
 - Example: `tag 2 nike adidas jordans`
+ 
 ```
 [T][] buy shoes
 tags:#nike,#adidas,#jordans
@@ -64,6 +68,7 @@ tags:#nike,#adidas,#jordans
 - Find a task whose description contains a specified keyword
 - Command: `find <KEYWORD>`
 - Example: `find home`
+ 
 ```
 Here are the tasks that match the keyword: home
 1. [D][] finish homework
@@ -75,6 +80,7 @@ tags:
 - Mark a task as completed
 - Command: `mark <IDX>`
 - Example: `mark 2`
+ 
 ```
 [T][X] buy shoes
 tags:#nike,#adidas,#jordans
@@ -84,6 +90,7 @@ tags:#nike,#adidas,#jordans
 - Mark a task as not completed
 - Command: `unmark <IDX>`
 - Example: `mark 2`
+ 
 ```
 [T][] buy shoes
 tags:#nike,#adidas,#jordans
@@ -93,6 +100,7 @@ tags:#nike,#adidas,#jordans
 - Delete a task from the list permanently
 - Command: `delete <IDX>`
 - Example: `delete 2`
+
 ```
 Sad to see this task go:
 [T][] buy shoes
